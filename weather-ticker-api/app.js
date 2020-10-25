@@ -9,7 +9,6 @@ const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
 const cors = require("cors");
-
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
@@ -37,14 +36,6 @@ app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-//set up Cors
-
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Credentials", "true");
-//   next();
-// });
 
 app.use(
   cors({
@@ -85,17 +76,23 @@ app.locals.title = "Express - Generated with IronGenerator";
 app.use(
   session({
     secret: "irongenerator",
-    resave: true,
+    // resave: true,
+    // saveUninitialized: true,
+    // store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    resave: false,
     saveUninitialized: true,
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    cookie: { maxAge: 864000 }, // 14 minutes
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 60 * 60 * 24, // 1 day
+    }),
   })
 );
 app.use(flash());
 require("./passport")(app);
 
-const index = require("./routes/index");
-app.use("/", index);
-
 app.use("/", require("./routes/index"));
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/task", require("./routes/task-routes/tasks"));
 
 module.exports = app;

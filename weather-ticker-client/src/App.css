@@ -36,3 +36,59 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  margin: 0;
+  padding: 5vw 0 0;
+}
+
+nav {
+  width: 90vw;
+  padding: 0 5vw;
+  height: 5vw;
+  position: fixed;
+  top: 0;
+}
+
+nav a {
+  margin-right: 1vw;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-align {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.general-padding {
+  padding: 0 5vw;
+}
+
+.task-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+.task-box {
+  width: 30%;
+  border: 1px solid black;
+}
+
+.task-box div {
+  width: 100%;
+}
