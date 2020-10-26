@@ -39,7 +39,7 @@
 
 body {
   margin: 0;
-  padding: 3.65vw 0 0;
+  padding: 5vw 0 0;
 }
 
 nav {
@@ -58,7 +58,7 @@ nav a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: aquamarine;
+  background-color: lightsteelblue;
 }
 
 .left-align {
@@ -69,7 +69,7 @@ nav a {
 
 .general-padding {
   padding: 0 5vw;
-  background-color: lightgreen;
+  background-color: aquamarine;
 }
 
 .task-container {
@@ -95,8 +95,16 @@ nav a {
   flex-direction: column;
 }
 
+li {
+  text-transform: capitalize;
+}
+
 .pokemonDetails h2 {
   text-transform: capitalize;
+}
+
+.pokemonDetails {
+  background-color: aquamarine;
 }
 
 .navbar {

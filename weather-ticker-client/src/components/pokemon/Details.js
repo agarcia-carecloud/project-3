@@ -60,6 +60,12 @@ export default class Details extends Component {
             return <li key={i}>{ele.type.name}</li>;
           })}
         </ul>
+        <ul className="centerContent">
+          <h3>Move List</h3>
+          {pokemonDetails.moves.map((ele, i) => {
+            return <li key={i}>{ele.move.name}</li>;
+          })}
+        </ul>
       </div>
     );
   }

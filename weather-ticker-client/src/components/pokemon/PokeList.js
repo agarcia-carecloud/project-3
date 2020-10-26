@@ -74,7 +74,7 @@ export default class PokeList extends Component {
   render() {
     return (
       <div className="general-padding ">
-        <h2>Pokemon List 001-251</h2>
+        <h1>Pokemon List 001-251</h1>
         <hr />
         <br />
         <br />
