@@ -5,11 +5,11 @@ import AuthService from "./components/services/AuthService";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import TaskList from "./components/tasks/TaskList";
-import UpdateTask from "./components/tasks/UpdateTask";
-import CreateTask from "./components/tasks/CreateTask";
+import Loading from "./components/Loading";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
+import PokeList from "./components/pokemon/PokeList";
+import Details from "./components/pokemon/Details";
 // import axios from "axios";
 
 class App extends React.Component {
@@ -53,6 +53,7 @@ class App extends React.Component {
               <Home {...props} getCurrentUser={this.getCurrentUser} />
             )}
           />
+          <Route exact path="/poke-list" component={PokeList} />
           <Route
             exact
             path="/signup"
@@ -63,6 +64,11 @@ class App extends React.Component {
                 <Signup {...props} getCurrentUser={this.getCurrentUser} />
               )
             }
+          />
+          <Route
+            exact
+            path="/details/:pkmnId"
+            render={(props) => <Details {...props} />}
           />
           <Route
             exact

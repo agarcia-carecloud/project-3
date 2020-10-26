@@ -13,7 +13,7 @@ class Navbar extends React.Component {
     this.service
       .logout()
       .then(() => {
-        this.props.history.push("/");
+        // this.props.history.push("/");
       })
       .catch((err) => console.log({ err }));
   };
@@ -41,6 +41,7 @@ class Navbar extends React.Component {
       <nav className="space-between">
         <div>
           <Link to="/">Home</Link>
+          <Link to="/poke-list">List of Pokemon</Link>
         </div>
         <div>{this.displayUserOptions()}</div>
       </nav>
