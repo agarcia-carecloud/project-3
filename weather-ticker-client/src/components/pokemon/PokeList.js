@@ -18,6 +18,7 @@ export default class PokeList extends Component {
   }
 
   getAllPokemon() {
+    //explore using await to support calling API for sprites AFTER getAllPokemon method completes
     axios
       .get(
         `https://pokeapi.co/api/v2/pokemon?limit=251`
@@ -28,27 +29,32 @@ export default class PokeList extends Component {
       .then((pokemonFromApi) => {
         this.setState({ listOfPokemon: pokemonFromApi.data.results });
         console.log(pokemonFromApi.data.results);
+        // axios.get(
+        //     `https://pokeapi.co/api/v2/pokemon/${Number(
+        //       this.state.listOfPokemon.url.split("/")[6]
+        //     )}`
+        //   )
       })
       .catch((err) => console.log({ err }));
   }
 
-  //searching for method to display pokemon sprites alongside names but unable to due to API structure
+  //searching for method to display pokemon sprites alongside names
 
-  //   getPokemonSprites() {
-  //     axios
-  //       .get(
-  //         `https://pokeapi.co/api/v2/pokemon/${Number(
-  //           this.state.listOfPokemon.url.split("/")[6]
-  //         )}`
-  //       )
-  //       .then((resultsFromApi) => {
-  //         console.log(resultsFromApi.data);
-  //         this.setState({ pkmnPic: resultsFromApi.data });
-  //       })
-  //       .catch((err) => {
-  //         console.log(`error loading pokemon sprites from API: ${err}`);
-  //       });
-  //   }
+  // getPokemonSprites() {
+  //   axios
+  //     .get(
+  //       `https://pokeapi.co/api/v2/pokemon/${Number(
+  //         this.state.listOfPokemon.url.split("/")[6]
+  //       )}`
+  //     )
+  //     .then((resultsFromApi) => {
+  //       console.log(resultsFromApi.data);
+  //       this.setState({ pkmnPic: resultsFromApi.data });
+  //     })
+  //     .catch((err) => {
+  //       console.log(`error loading pokemon sprites from API: ${err}`);
+  //     });
+  // }
 
   displayPokemonList() {
     const { listOfPokemon } = this.state;
